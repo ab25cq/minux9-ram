@@ -51,17 +51,12 @@ SECTIONS
   . = . + 4096 * STACK_PAGES * 10;
   . = ALIGN(4096);
 
-  PROVIDE(_end = .);
+  PROVIDE(_end = .); /* heap */
   . = . + 4096 * STACK_PAGES * 10;
   . = ALIGN(4096);
   
-  PROVIDE(_ramdisk_start = .);                                                
-  .ramdisk (NOLOAD) : { . = . + 4096 * STACK_PAGES * 10; } : data
-  PROVIDE(_ramdisk_end = .);
-  . = ALIGN(4096);
-  
-  PROVIDE(_end3 = .);
-  . = 0x81500000;
+  PROVIDE(_end3 = .); /* kalloc */
+/*  . = 0x81500000; */
   . = ALIGN(4096);
   
   .debug_info        0 : { *(.debug_info) } 

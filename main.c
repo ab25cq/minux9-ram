@@ -801,17 +801,11 @@ void alloc_prog(char* elf_buf, int elf_buf_size, int fork_flag, int exec_flag, i
                 if (copyout(result->pagetable, pos, (void*)zpg, n) < 0) panic("bss zero");
                 pos += n;
             }
-    
-            // Debug (visualize ranges)
-            // printf("start2 %p end2 %p (%s)\n", (void*)sh[i].addr, (void*)(sh[i].addr+sh[i].size), shstrtab+sh[i].name);
         }
     }
-//puts("alloc_prog3\n");
     
     result->vaddr = ph->vaddr;
     result->memsz = ph->memsz;
-    
-//printf("vaddr %p exec %d\n", ph->vaddr, exec_flag);
 
     // Find global pointer
     uint64_t gp = 0;

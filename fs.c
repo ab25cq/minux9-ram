@@ -75,8 +75,8 @@ static int add_dirent(uint32_t parent_inum, const char *name, uint32_t child_inu
 // ────────────────────────────────────────────────────────────────────────
 
 #define RAMDISK_NBLOCKS 8192   // 4096 * 512 = 2 MiB RAM-backed image
-//static uint8_t ramdisk[RAMDISK_NBLOCKS * BSIZE] __attribute__((aligned(4096)));
-static uint8_t ramdisk[RAMDISK_NBLOCKS * BSIZE] __attribute__((section(".ramdisk"), aligned(4096)));
+static uint8_t ramdisk[RAMDISK_NBLOCKS * BSIZE] __attribute__((aligned(4096)));
+//static uint8_t ramdisk[RAMDISK_NBLOCKS * BSIZE] __attribute__((section(".ramdisk"), aligned(4096)));
 static uint32_t ramdisk_blocks = RAMDISK_NBLOCKS;
 
 #ifndef EMBED_FS_IMAGE
@@ -514,8 +514,8 @@ static void ramfs_format_from_embedded(void)
     // Provide pwd for simple execution sanity check.
     ramfs_add_file_root("pwd", pwd_elf, (size_t)pwd_elf_len, 0755);
     // Toolchain basics for in-guest builds.
-    ramfs_add_file_root("objdump", objdump_elf, (size_t)objdump_elf_len, 0755);
 /*
+    ramfs_add_file_root("objdump", objdump_elf, (size_t)objdump_elf_len, 0755);
     ramfs_add_file_root("cc", cc_elf, (size_t)cc_elf_len, 0755);
     ramfs_add_file_root("as", as_elf, (size_t)as_elf_len, 0755);
     ramfs_add_file_root("ld", ld_elf, (size_t)ld_elf_len, 0755);
