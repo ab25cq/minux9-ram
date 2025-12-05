@@ -4,7 +4,6 @@ There are no discarded input sections
 Memory Configuration
 
 Name             Origin             Length             Attributes
-RAM              0x0000000080000000 0x0000000040000000 xrw
 *default*        0x0000000000000000 0xffffffffffffffff
 
 Linker script and memory map
@@ -210,50 +209,50 @@ LOAD syscall.o
                 0x000000008000e746                Sys_lseek
                 0x000000008000f000                . = ALIGN (0x1000)
 
-.rodata         0x000000008000e7a0     0x27e0
+.rodata         0x000000008000f000     0x27e0
  *(.rodata*)
- .rodata        0x000000008000e7a0      0x130 fs.o
- .rodata        0x000000008000e8d0     0x2428 main.o
- .rodata        0x0000000080010cf8       0xe9 libc.o
- *fill*         0x0000000080010de1        0x7 
- .rodata        0x0000000080010de8      0x198 syscall.o
+ .rodata        0x000000008000f000      0x130 fs.o
+ .rodata        0x000000008000f130     0x2428 main.o
+ .rodata        0x0000000080011558       0xe9 libc.o
+ *fill*         0x0000000080011641        0x7 
+ .rodata        0x0000000080011648      0x198 syscall.o
 
-.data           0x0000000080010f80   0x139570
+.data           0x00000000800117e0   0x139570
  *(.data .data.*)
- .data          0x0000000080010f80        0x0 entry.o
- .data          0x0000000080010f80        0x0 start.o
- .data          0x0000000080010f80        0x0 userret.o
- .data          0x0000000080010f80        0x0 trap.o
- .data          0x0000000080010f80   0x11a908 fs.o
-                0x0000000080010f80                as_elf
-                0x000000008003f908                as_elf_len
-                0x000000008003f910                cc_elf
-                0x0000000080084f90                cc_elf_len
-                0x0000000080084f98                ld_elf
-                0x00000000800b1078                ld_elf_len
-                0x00000000800b1080                ls_elf
-                0x00000000800cead0                ls_elf_len
-                0x00000000800cead8                nm_elf
-                0x00000000800ecff8                nm_elf_len
-                0x00000000800ed000                objdump_elf
-                0x000000008010dfe0                objdump_elf_len
-                0x000000008010dfe8                pwd_elf
-                0x000000008012b880                pwd_elf_len
- .data          0x000000008012b888        0x0 plic.o
- .data          0x000000008012b888        0x0 trap_c.o
- .data          0x000000008012b888    0x1eb60 main.o
-                0x000000008012b888                sh_elf
-                0x000000008014a380                sh_elf_len
-                0x000000008014a388                gUsers
- .data          0x000000008014a3e8      0x108 libc.o
-                0x000000008014a3e8                __stdin
-                0x000000008014a438                __stdout
-                0x000000008014a488                __stderr
-                0x000000008014a4d8                stdin
-                0x000000008014a4e0                stdout
-                0x000000008014a4e8                stderr
- .data          0x000000008014a4f0        0x0 syscall.o
-                0x000000008014a4f0                . = ALIGN (0x10)
+ .data          0x00000000800117e0        0x0 entry.o
+ .data          0x00000000800117e0        0x0 start.o
+ .data          0x00000000800117e0        0x0 userret.o
+ .data          0x00000000800117e0        0x0 trap.o
+ .data          0x00000000800117e0   0x11a908 fs.o
+                0x00000000800117e0                as_elf
+                0x0000000080040168                as_elf_len
+                0x0000000080040170                cc_elf
+                0x00000000800857f0                cc_elf_len
+                0x00000000800857f8                ld_elf
+                0x00000000800b18d8                ld_elf_len
+                0x00000000800b18e0                ls_elf
+                0x00000000800cf330                ls_elf_len
+                0x00000000800cf338                nm_elf
+                0x00000000800ed858                nm_elf_len
+                0x00000000800ed860                objdump_elf
+                0x000000008010e840                objdump_elf_len
+                0x000000008010e848                pwd_elf
+                0x000000008012c0e0                pwd_elf_len
+ .data          0x000000008012c0e8        0x0 plic.o
+ .data          0x000000008012c0e8        0x0 trap_c.o
+ .data          0x000000008012c0e8    0x1eb60 main.o
+                0x000000008012c0e8                sh_elf
+                0x000000008014abe0                sh_elf_len
+                0x000000008014abe8                gUsers
+ .data          0x000000008014ac48      0x108 libc.o
+                0x000000008014ac48                __stdin
+                0x000000008014ac98                __stdout
+                0x000000008014ace8                __stderr
+                0x000000008014ad38                stdin
+                0x000000008014ad40                stdout
+                0x000000008014ad48                stderr
+ .data          0x000000008014ad50        0x0 syscall.o
+                0x000000008014ad50                . = ALIGN (0x10)
                 0x000000008014b000                . = ALIGN (0x1000)
                 0x000000008014b000                PROVIDE (_bss_start = .)
 
@@ -301,43 +300,43 @@ LOAD syscall.o
                 0x00000000805a2000                . = ALIGN (0x1000)
                 0x00000000805a2000                PROVIDE (TRAMPOLINE = .)
 
-.trampoline     0x000000008055f9a0      0x570
+.trampoline     0x00000000805a2000      0x570
  *(.trampoline)
- .trampoline    0x000000008055f9a0      0x570 trap.o
-                0x000000008055f9a0                trapvec
-                0x000000008055fba8                swtch
-                0x000000008055fc6a                enter_user
-                0x000000008055fca2                swtch_debug
-                0x000000008055fd64                mtvec
-                0x000000008055fd7e                asm_memmove
-                0x000000008055fdb4                yield
-                0x000000008055fe64                yield_return
+ .trampoline    0x00000000805a2000      0x570 trap.o
+                0x00000000805a2000                trapvec
+                0x00000000805a2208                swtch
+                0x00000000805a22ca                enter_user
+                0x00000000805a2302                swtch_debug
+                0x00000000805a23c4                mtvec
+                0x00000000805a23de                asm_memmove
+                0x00000000805a2414                yield
+                0x00000000805a24c4                yield_return
 
-.rela.dyn       0x000000008055ff10        0x0
- .rela.text     0x000000008055ff10        0x0 entry.o
+.rela.dyn       0x00000000805a2570        0x0
+ .rela.text     0x00000000805a2570        0x0 entry.o
  .rela.trampoline
-                0x000000008055ff10        0x0 entry.o
-                0x0000000080560f10                . = (. + 0x1000)
-                0x0000000080561000                . = ALIGN (0x1000)
-                0x0000000080561000                PROVIDE (COMMON = .)
+                0x00000000805a2570        0x0 entry.o
+                0x00000000805a3570                . = (. + 0x1000)
+                0x00000000805a4000                . = ALIGN (0x1000)
+                0x00000000805a4000                PROVIDE (COMMON = .)
 
-.common         0x000000008055ff10   0x4421a4
+.common         0x00000000805a4000   0x4421a4
  *(.common)
- .common        0x000000008055ff10   0x4421a4 main.o
-                0x000000008055ff10                kernel_sp
-                0x000000008055ff18                user_sp
-                0x000000008055ff20                kernel_satp
-                0x000000008055ff28                user_satp
-                0x000000008055ff30                yield_stack
-                0x000000008059ff30                gKernelState
-                0x00000000809a20b0                gNumKernelState
-                0x0000000080c220b4                . = (. + ((0x1000 * STACK_PAGES) * 0xa))
-                0x0000000080c23000                . = ALIGN (0x1000)
-                0x0000000080c23000                PROVIDE (_end = .)
-                0x0000000080ea3000                . = (. + ((0x1000 * STACK_PAGES) * 0xa))
-                0x0000000080ea3000                . = ALIGN (0x1000)
-                0x0000000080ea3000                PROVIDE (_end3 = .)
-                0x0000000080ea3000                . = ALIGN (0x1000)
+ .common        0x00000000805a4000   0x4421a4 main.o
+                0x00000000805a4000                kernel_sp
+                0x00000000805a4008                user_sp
+                0x00000000805a4010                kernel_satp
+                0x00000000805a4018                user_satp
+                0x00000000805a4020                yield_stack
+                0x00000000805e4020                gKernelState
+                0x00000000809e61a0                gNumKernelState
+                0x0000000080c661a4                . = (. + ((0x1000 * STACK_PAGES) * 0xa))
+                0x0000000080c67000                . = ALIGN (0x1000)
+                0x0000000080c67000                PROVIDE (_end = .)
+                0x0000000080ee7000                . = (. + ((0x1000 * STACK_PAGES) * 0xa))
+                0x0000000080ee7000                . = ALIGN (0x1000)
+                0x0000000080ee7000                PROVIDE (_end3 = .)
+                0x0000000080ee7000                . = ALIGN (0x1000)
 
 .riscv.attributes
                 0x0000000000000000       0x6a
