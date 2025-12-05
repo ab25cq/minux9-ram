@@ -27,6 +27,8 @@ SECTIONS
   PROVIDE(_bss_start = .);
   .bss : { *(.bss) *(.bss.*) *(.sbss) *(.sbss.*) } :data
   .sdata : { *(.sdata*) } :data
+  . = ALIGN(4096);
+  .ramdisk (NOLOAD) : { *(.ramdisk) } :data
   PROVIDE(_bss_end = .);
   PROVIDE(_code_end = .);
   . += STACK_MAX;
