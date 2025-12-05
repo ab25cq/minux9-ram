@@ -12,6 +12,7 @@ make clean
 
 git add .
 git commit 
+git remote add origin git@github.com:ab25cq/minux9-ram.git
 git remote set-url origin git@github.com:ab25cq/minux9-ram.git
 git push --force origin master
 
