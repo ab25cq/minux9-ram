@@ -90,7 +90,7 @@ struct cpu* mycpu() {
 
 #define KERNBASE 0x80000000UL
 // Physical memory ceiling; must exceed .ramdisk/.bss area.
-#define PHYSTOP  0x90000000UL   // 256 MiB span (QEMU is started with -m 1024M)
+#define PHYSTOP  0xA0000000UL   // 256 MiB span (QEMU is started with -m 1024M)
 
 void* walkaddr(pagetable_t pagetable, uint64_t va);
 void kfree_pagesX(void *pa, int npages);

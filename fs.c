@@ -74,7 +74,7 @@ static int add_dirent(uint32_t parent_inum, const char *name, uint32_t child_inu
 // Simple driver for virtio block device (legacy MMIO)
 // ────────────────────────────────────────────────────────────────────────
 
-#define RAMDISK_NBLOCKS 131072 // 64 MiB RAM-backed image (keep in sync with mkfs.c)
+#define RAMDISK_NBLOCKS 196608 // 96 MiB RAM-backed image (keep in sync with mkfs.c)
 static uint8_t ramdisk[RAMDISK_NBLOCKS * BSIZE] __attribute__((section(".ramdisk"), aligned(4096)));
 static uint32_t ramdisk_blocks = RAMDISK_NBLOCKS;
 
