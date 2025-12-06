@@ -16,7 +16,7 @@
 //#define NINODES     64      // Number of inodes (expand to fit file count)
 //#define NBLOCKS     256     // Total block count (example value)
 #define NINODES     128     // Leave some headroom
-#define NBLOCKS     65536   // 32 MiB image (keep in sync with RAMDISK_NBLOCKS)
+#define NBLOCKS     131072  // 64 MiB image (keep in sync with RAMDISK_NBLOCKS)
 
 // Inodes per block
 #define IPB         (BSIZE / sizeof(struct dinode))
